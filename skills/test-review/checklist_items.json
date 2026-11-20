@@ -1,0 +1,132 @@
+{
+  "schema_version": 1,
+  "note": "Test quality items. Each item states its population: the set of things the agent must enumerate, count and examine.",
+  "batches": [
+    {
+      "id": "R",
+      "category": "Run Results",
+      "items": [
+        {
+          "id": "R-pass",
+          "severity": "critical",
+          "population": "Every test reported in the suite output.",
+          "text": "Ensure that every test in scope passes."
+        },
+        {
+          "id": "R-skip",
+          "severity": "medium",
+          "population": "Every skipped, xfail, or disabled test reported in the suite output.",
+          "text": "Ensure that every skipped or expected-failure test states a reason, and that the reason is still valid."
+        },
+        {
+          "id": "R-deterministic",
+          "severity": "high",
+          "population": "Every test file added or changed in scope.",
+          "text": "Ensure that tests are deterministic: no unseeded randomness, wall-clock time, live network, or dependence on test order."
+        },
+        {
+          "id": "R-slow",
+          "severity": "low",
+          "population": "Every test with a recorded duration in the suite output (use the runner's durations report if available).",
+          "text": "Ensure that no test is unexpectedly slow relative to the rest of the suite."
+        }
+      ]
+    },
+    {
+      "id": "CV",
+      "category": "Coverage",
+      "items": [
+        {
+          "id": "CV-new",
+          "severity": "high",
+          "population": "Every public function, method, class, or behavior added or changed in production code in scope.",
+          "text": "Ensure that each new or changed behavior has at least one test that exercises it."
+        },
+        {
+          "id": "CV-edge",
+          "severity": "high",
+          "population": "Every production function added or changed in scope that accepts input.",
+          "text": "Ensure that boundary conditions are tested (None/null, empty, zero, negative, maximum values, off-by-one)."
+        },
+        {
+          "id": "CV-errors",
+          "severity": "high",
+          "population": "Every error, exception, or failure path added or changed in production code in scope.",
+          "text": "Ensure that each error path is exercised by a test that asserts the expected failure."
+        },
+        {
+          "id": "CV-lines",
+          "severity": "medium",
+          "population": "Every changed production line, using coverage data if the runner produced it.",
+          "text": "Ensure that changed production lines are executed by the tests. If no coverage data exists, verdict n/a with that reason."
+        }
+      ]
+    },
+    {
+      "id": "AQ",
+      "category": "Assertion Quality",
+      "items": [
+        {
+          "id": "AQ-behavior",
+          "severity": "high",
+          "population": "Every test added or changed in scope.",
+          "text": "Ensure that tests assert observable behavior, not only that mocks were called."
+        },
+        {
+          "id": "AQ-specific",
+          "severity": "medium",
+          "population": "Every assertion in tests added or changed in scope.",
+          "text": "Ensure that assertions are specific (exact values, entire strings) rather than truthiness or partial matches."
+        },
+        {
+          "id": "AQ-sensitive",
+          "severity": "high",
+          "population": "Every production function added or changed in scope.",
+          "text": "Ensure that at least one test would fail if the production change were removed or inverted."
+        },
+        {
+          "id": "AQ-distinct",
+          "severity": "medium",
+          "population": "Every test added or changed in scope.",
+          "text": "Ensure that each test covers distinct behavior and does not repeat the code path or assertion of another test."
+        }
+      ]
+    },
+    {
+      "id": "MT",
+      "category": "Test Maintainability",
+      "items": [
+        {
+          "id": "MT-production",
+          "severity": "critical",
+          "population": "Every production file changed in scope.",
+          "text": "Ensure that production code was not removed or weakened to make tests pass."
+        },
+        {
+          "id": "MT-isolation",
+          "severity": "high",
+          "population": "Every test added or changed in scope.",
+          "text": "Ensure that tests do not share mutable state and pass when run individually or in any order."
+        },
+        {
+          "id": "MT-private",
+          "severity": "medium",
+          "population": "Every test added or changed in scope.",
+          "text": "Ensure that tests exercise public behavior and do not test private members directly."
+        },
+        {
+          "id": "MT-fixtures",
+          "severity": "low",
+          "population": "Every block of setup code repeated across two or more tests in scope.",
+          "text": "Ensure that repeated setup is extracted into fixtures or helpers."
+        },
+        {
+          "id": "MT-names",
+          "severity": "low",
+          "population": "Every test added or changed in scope.",
+          "text": "Ensure that test names describe the behavior being verified."
+        }
+      ]
+    }
+  ]
+}
